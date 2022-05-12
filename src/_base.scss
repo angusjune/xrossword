@@ -1,0 +1,70 @@
+@use "sass:color";
+@use "sass:map";
+
+$themes: (
+    light: (
+        'background': #fafafa,
+        'surface': #fff,
+        'surface-secondary': #e4e4e4,
+        'theme': #338DF6,
+        'on-surface': #333,
+        'on-surface-secondary': #666,
+        'on-theme': #fff,
+        'input-placeholder': #aaa,
+        'ruler': rgba(0, 0, 0, .08),
+    ),
+    dark: (
+        'background': #131313,
+        'surface': #333,
+        'surface-secondary': #7d7d7d,
+        'theme': #56a0f6,
+        'on-surface': #fff,
+        'on-surface-secondary': #aaa,
+        'on-theme': #fff,
+        'input-placeholder': #555,
+        'ruler': rgba(255, 255, 255, .08),
+    )
+);
+
+@function color($key, $theme: 'light') {
+    @return map.get(map.get($themes, $theme), $key);
+}
+
+@mixin props($theme: 'light') {
+    @each $key, $map in map.get($themes, $theme) {
+        --#{$key}: #{color(#{$key}, $theme)};
+    }
+}
+
+:global(:root) {
+    @include props();
+}
+
+@media (prefers-color-scheme: dark) {
+    :global(:root) {
+        @include props('dark');
+    }
+}
+
+@mixin reset() {
+    :global(html, body) {
+        font-family: -apple-system, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        -webkit-user-select: none;
+    }
+
+    @media (max-width: 320px) {
+        :global(html, body) {
+            font-size: 14px;
+        }
+    }
+
+    @media (min-width: 640px) {
+        :global(html, body) {
+            font-size: 18px;
+        }
+    }
+}
