@@ -17,7 +17,7 @@
 
         if (index === prevCursor) {
             count = index + 1;
-            letters.splice(count + 1);
+            letters.splice(count - 1);
             letters = letters;
         } else if (index > count - 1) {
             count = index + 1;
