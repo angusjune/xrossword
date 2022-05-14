@@ -32,6 +32,6 @@
     ],
     "start_url": "/index.html",
     "display": "minimal-ui",
-    "background_color": "#fff",
-    "theme_color": "#121214"
+    "background_color": "#fafafa",
+    "theme_color": "#338DF6"
 }
