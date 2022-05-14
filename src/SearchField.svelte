@@ -24,6 +24,7 @@
 
 <style scoped lang="scss">
     .searchfield {
+        position: relative;
         width: 100%;
 
         &__label {
@@ -48,7 +49,7 @@
             color: var(--on-surface);
             touch-action: manipulation;
 
-            &::-webkit-search-decoration, &::-webkit-search-cancel-button {
+            &::-webkit-search-decoration/*, &::-webkit-search-cancel-button*/ {
                 display: none;
             }
 
